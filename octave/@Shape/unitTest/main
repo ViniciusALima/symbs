@@ -1,0 +1,27 @@
+%
+clc
+clear all
+close all
+addpath('../..')
+
+% Test: instantiation
+shape = Shape;
+
+% Test: instantiation
+shape = Shape({Point(0,0),Point(1,0),Point(0.5,1)},'r',false);
+
+% Test: sub_shapes
+sub_shape = Shape({Point(0,0),Point(0.5,0),Point(0.25,0.5)},'b',true);
+shape.sub_shapes = {sub_shape};
+
+% Test: circle
+circle = Shape.circle(0.1,Point(0.5,0.5),'color','g','filled',true);
+shape.sub_shapes = {sub_shape,circle};
+
+% Test: rectangle
+rect = Shape.rectangle(1,1,Point(0.5,0.5),'color','k','filled',false);
+shape.sub_shapes = {sub_shape,circle,rect};
+
+% Test : draw
+shape.draw;
+
